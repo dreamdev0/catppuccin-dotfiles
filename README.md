@@ -2,4 +2,4 @@
 
 ---
 
-![Desktop Screenshot](screenshot.png)
+![YASB](YASB%20Dream%20In%20Mocha%20Mauve.png)
