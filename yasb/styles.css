@@ -1,407 +1,537 @@
 :root {
-  --ctp-mocha-mauve: #cba6f7;
-  --ctp-mocha-text: #cdd6f4;
-  --ctp-mocha-subtext1: #bac2de;
-  --ctp-mocha-subtext0: #a6adc8;
-  --ctp-mocha-overlay2: #9399b2;
-  --ctp-mocha-overlay1: #7f849c;
-  --ctp-mocha-overlay0: #6c7086;
-  --ctp-mocha-surface2: #585b70;
-  --ctp-mocha-surface1: #45475a;
-  --ctp-mocha-surface0: #313244;
-  --ctp-mocha-base: #1e1e2e;
-  --ctp-mocha-mantle: #181825;
-  --ctp-mocha-crust: #11111b;
+    --ctp-mocha-primary: #cba6f7;
+    --ctp-mocha-text: #cdd6f4;
+    --ctp-mocha-overlay: rgba(127, 132, 156, 0.25);
+    --ctp-mocha-surface: rgba(69, 71, 90, 0.25);
+    --ctp-mocha-base: rgba(30, 30, 46, 0.25);
+    --ctp-mocha-mantle: rgba(24, 24, 37, 0.25);
+    --ctp-mocha-crust: rgba(17, 17, 27, 0.25);
+    --font-bar: "JetBrainsMono NFP";
+    --font-ui: "Segoe UI";
+    --font-icon: "Segoe Fluent Icons";
 }
 
 * {
-  color: var(--ctp-mocha-text);
-  font-family: "JetBrainsMono NFP";
+    color: var(--ctp-mocha-text);
+    font-family: var(--font-bar);
+    font-size: 12px;
+    text-shadow: 0 0 12px #000;
 }
 
+/* YASB */
 .yasb-bar {
-  background-color: var(--ctp-mocha-crust);
-  border-bottom: 1px solid var(--ctp-mocha-surface0);
+    padding: 4px;
+    background-color: var(--ctp-mocha-crust);
 }
 
+/* Widget Base */
 .widget {
-  background-color: var(--ctp-mocha-base);
-  margin: 8px 4px;
-  border-radius: 4px;
-  border: 1px solid var(--ctp-mocha-surface0);
+    min-width: 32px;
+    margin: 4px;
+    border: 1px solid var(--ctp-mocha-overlay);
+    border-radius: 4px;
+    background-color: var(--ctp-mocha-base);
 }
-
 .widget .icon {
-  color: var(--ctp-mocha-mauve);
-  font-size: 16px;
-  min-width: 32px;
-  max-width: 32px;
+    min-width: 32px;
+    max-width: 32px;
+    color: var(--ctp-mocha-primary);
+    font-size: 16px;
 }
-
 .widget .label {
-  padding-right: 8px;
-  font-size: 12px;
-  font-weight: bold;
+    padding-right: 8px;
+    font-weight: bold;
 }
 
+/* Home Widget */
 .home-widget {
-  margin-left: 16px;
+    transition: background-color 0.25s ease;
+    cursor: pointer;   
 }
-
+.home-widget:hover {
+    background-color: var(--ctp-mocha-surface);
+}
 .home-widget .icon {
-  color: var(--ctp-mocha-text);
+    color: var(--ctp-mocha-text);
 }
-
 .home-menu {
-  background-color: var(--ctp-mocha-crust);
+    background-color: var(--ctp-mocha-crust);
 }
-
 .home-menu .menu-item {
-  font-family: "Segoe UI";
-  margin: 8px;
-  padding: 8px 64px 8px 8px;
-  border-radius: 4px;
+    padding: 12px 48px 12px 12px;
+    border-radius: 4px;
+    background-color: transparent;
+    font-family: var(--font-ui);
+    transition: background-color 0.25s ease;
+    cursor: pointer;
 }
-
 .home-menu .menu-item:hover {
-  background-color: var(--ctp-mocha-base);
+    background-color: var(--ctp-mocha-surface);
 }
 
-.calendar {
-  background-color: var(--ctp-mocha-crust);
+/* Clock Widget */
+.clock-widget {
+    transition: background-color 0.25s ease;
+    cursor: pointer;
+}
+.clock-widget:hover {
+    background-color: var(--ctp-mocha-surface);
+}
+.clock-popup.calendar {
+    background-color: var(--ctp-mocha-crust);
+}
+.clock-popup.calendar .calendar-table,
+.clock-popup.calendar .calendar-table::item {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-family: var(--font-ui);
+}
+.clock-popup.calendar .calendar-table::item:selected {
+    border: 1px solid var(--ctp-mocha-overlay);
+    border-radius: 4px;
+    background-color: var(--ctp-mocha-surface);
+    color: var(--ctp-mocha-primary);
+}
+.clock-popup.calendar .day-label,
+.clock-popup.calendar .month-label,
+.clock-popup.calendar .date-label,
+.clock-popup.calendar .week-label {
+    font-family: var(--font-ui);
+    max-width: 160px;
+    min-width: 160px;
+    color: var(--ctp-mocha-primary);
+}
+.clock-popup.calendar .date-label {
+    font-size: 72px;
+    font-weight: bold;
 }
 
-.calendar .calendar-table,
-.calendar .calendar-table::item {
-  background-color: transparent;
-  font-family: "Segoe UI";
-  border: none;
-  outline: none;
+/* Volume Widget */
+.volume-widget {
+    transition: background-color 0.25s ease;
+    cursor: pointer;
+}
+.volume-widget:hover {
+    background-color: var(--ctp-mocha-surface);
+}
+.volume-widget .audio-menu {
+    background-color: var(--ctp-mocha-crust);
+}
+.audio-menu .audio-container .device {
+    margin-bottom: 8px;
+    padding: 8px 16px;
+    border: 1px solid var(--ctp-mocha-overlay);
+    border-radius: 4px;
+    background-color: var(--ctp-mocha-base);
+    font-family: var(--font-ui);
+    transition: background-color 0.25s ease;
+    cursor: pointer;
+}
+.audio-menu .audio-container .device:hover {
+    background-color: var(--ctp-mocha-surface);
+}
+.audio-menu .audio-container .device.selected {
+    border: 1px solid var(--ctp-mocha-primary);
+    background-color: var(--ctp-mocha-surface);
+    color: var(--ctp-mocha-primary);
+}
+.audio-menu .system-volume-container .volume-slider {
+    margin-right: 8px;
+}
+.audio-menu .system-volume-container .volume-slider::groove,
+.audio-menu .apps-container .app-volume .app-slider::groove {
+    height: 4px;
+    background-color: var(--ctp-mocha-overlay);
+}
+.audio-menu .system-volume-container .volume-slider::groove:hover,
+.audio-menu .apps-container .app-volume .app-slider::groove:hover {
+    height: 6px;
+}
+.audio-menu .system-volume-container .volume-slider::sub-page,
+.audio-menu .apps-container .app-volume .app-slider::sub-page {
+    background-color: var(--ctp-mocha-primary);
+}
+.audio-menu .toggle-apps {
+    padding: 8px 16px;
+    border: 1px solid var(--ctp-mocha-overlay);
+    border-radius: 4px;
+    outline: none;
+    background-color: var(--ctp-mocha-base);
+    transition: background-color 0.25s ease;
+}
+.audio-menu .toggle-apps:hover {
+    background-color: var(--ctp-mocha-surface);
+}
+.audio-menu .toggle-apps.expanded {
+    background-color: var(--ctp-mocha-surface);
+}
+.audio-menu .apps-container .app-volume .app-icon-container {
+    margin: 8px 8px 4px 0;
+    padding: 8px;
+    border: 1px solid var(--ctp-mocha-overlay);
+    border-radius: 4px;
+    background-color: var(--ctp-mocha-base);
+    transition: background-color 0.25s ease;
+}
+.audio-menu .apps-container .app-volume .app-icon-container:hover {
+    background-color: var(--ctp-mocha-surface);
 }
 
-.calendar .calendar-table::item:selected {
-  color: var(--ctp-mocha-mauve);
-  background-color: var(--ctp-mocha-base);
-  border-radius: 4px;
-}
-
-.calendar .day-label,
-.calendar .month-label,
-.calendar .date-label,
-.calendar .week-label {
-  color: var(--ctp-mocha-mauve);
-  min-width: 160px;
-  max-width: 160px;
-  font-weight: bold;
-}
-
-.calendar .date-label {
-  font-size: 80px;
-  padding: 4px 0;
-}
-
-.audio-menu {
-  background-color: var(--ctp-mocha-crust);
-}
-
-.audio-container .device {
-  font-family: "Segoe UI";
-  padding: 8px 16px;
-  margin: 4px;
-  border-radius: 4px;
-}
-
-.audio-container .device.selected {
-  background-color: var(--ctp-mocha-base);
-  color: var(--ctp-mocha-mauve);
-}
-
-.audio-container .device:hover {
-  background-color: var(--ctp-mocha-base);
-}
-
-.audio-menu .system-volume-container {
-  margin: 8px 4px;
-  padding: 0;
-}
-
-.audio-menu .system-volume-container .volume-slider::groove {
-  background-color: var(--ctp-mocha-surface0);
-  height: 4px;
-}
-
-.audio-menu .system-volume-container .volume-slider::groove:hover {
-  height: 6px;
-}
-
-.audio-menu .system-volume-container .volume-slider::sub-page {
-  background-color: var(--ctp-mocha-mauve);
-}
-
-.quick-launch-popup .container {
-  background-color: var(--ctp-mocha-crust);
-}
-
-.quick-launch-popup .search {
-  padding: 12px 16px;
-}
-
-.quick-launch-popup .search .search-icon {
-  font-family: "Segoe Fluent Icons";
-  color: var(--ctp-mocha-mauve);
-  font-size: 16px;
-  padding-right: 8px;
-}
-
-.quick-launch-popup .search .search-submit-icon {
-  font-family: "Segoe Fluent Icons";
-  color: var(--ctp-mocha-mauve);
-  font-size: 16px;
-}
-
-.quick-launch-popup .search .search-input {
-  font-family: "Segoe UI";
-  background: transparent;
-  border: none;
-  font-size: 16px;
-  padding: 4px 0;
-}
-
-.quick-launch-popup .search .prefix {
-  font-family: "Segoe UI";
-  background-color: var(--ctp-mocha-mauve);
-  color: var(--ctp-mocha-crust);
-  border-radius: 6px;
-  padding: 0 8px;
-  margin-right: 8px;
-  font-size: 16px;
-}
-
-.quick-launch-popup .results {
-  background-color: transparent;
-  padding: 8px;
-}
-
-.quick-launch-popup .results-list-view {
-  font-family: "Segoe UI";
-  font-size: 16px;
-}
-
-.quick-launch-popup .results-list-view .description {
-  font-family: "Segoe UI";
-  font-size: 12px;
-  color: var(--ctp-mocha-overlay2);
-}
-
-.quick-launch-popup .results-list-view::item {
-  padding: 12px;
-  border-radius: 8px;
-}
-
-.quick-launch-popup .results-list-view::item:hover,
-.quick-launch-popup .results-list-view::item:selected {
-  background-color: var(--ctp-mocha-base);
-}
-
-.quick-launch-popup .results-empty-text {
-  color: transparent;
-}
-
-.glazewm-tiling-direction {
-  min-width: 8px;
-}
-
-.glazewm-tiling-direction .btn {
-  border: none;
-  outline: none;
-  font-size: 24px;
-  min-width: 32px;
-  max-width: 32px;
-}
-
+/* GlazeWM Workspaces Widget */
 .glazewm-workspaces {
-  padding: 12px 4px;
-  width: 32px;
+    padding: 0 6px;
+    transition: background-color 0.25s ease;
+    cursor: pointer;
 }
-
+.glazewm-workspaces:hover {
+    background-color: var(--ctp-mocha-surface);
+}
 .glazewm-workspaces .ws-btn {
-  border-radius: 2px;
-  padding: 0 2px;
-  margin: 0 4px;
-  color: transparent;
+    margin: 12px 4px;
+    width: 8px;
+    border-radius: 4px;
+    background-color: var(--ctp-mocha-text);
+    color: transparent;
+    transition: width 0.25s ease;
 }
-
-.glazewm-workspaces .ws-btn.populated {
-  background-color: var(--ctp-mocha-text);
-}
-
 .glazewm-workspaces .ws-btn.active_populated,
 .glazewm-workspaces .ws-btn.active_empty {
-  background-color: var(--ctp-mocha-mauve);
-  padding: 0 6px;
+    width: 24px;
+    background-color: var(--ctp-mocha-primary);
+}
+.glazewm-workspaces .offline-status {
+    font-weight: bold;
 }
 
+/* Active Window Widget */
+.active-window-widget .widget-container .icon {
+    margin-left: 8px;
+    margin-right: -12px;
+    padding: 0;
+}
+
+/* Media Widget */
+.media-widget {
+    border: 2px solid var(--ctp-mocha-overlay);
+    border-radius: 0px;
+    background-color: transparent;
+}
 .media-widget .label {
-  padding: 0 64px;
+    padding: 0 64px;
 }
-
 .media-widget .progress-bar {
-  max-height: 2px;
-  background-color: transparent;
-  border: none;
+    max-height: 2px;
+    border: none;
+    background-color: var(--ctp-mocha-overlay);
 }
-
 .media-widget .progress-bar::chunk {
-  background-color: var(--ctp-mocha-mauve);
+    background-color: var(--ctp-mocha-primary);
 }
-
 .media-menu {
-  background-color: var(--ctp-mocha-crust);
-  max-width: 640px;
+    max-width: 720px;
+    background-color: var(--ctp-mocha-crust);
 }
-
 .media-menu .title,
 .media-menu .artist,
 .media-menu .playback-time {
-  font-family: "Segoe UI";
+    font-family: var(--font-ui);
 }
-
 .media-menu .title,
 .media-menu .artist {
-  font-size: 16px;
-  padding-left: 12px;
+    padding-left: 12px;
+    font-size: 16px;
 }
-
-.media-menu .title {
-  padding-bottom: 8px;
-}
-
 .media-menu .artist {
-  color: var(--ctp-mocha-mauve);
+    padding: 12px;
 }
-
+.media-menu .artist {
+    color: var(--ctp-mocha-primary);
+}
 .media-menu .btn {
-  background-color: var(--ctp-mocha-base);
-  border-radius: 8px;
-  font-size: 24px;
-  min-width: 64px;
-  max-width: 64px;
-  margin-left: 12px;
+    min-width: 64px;
+    max-width: 64px;
+    min-height: 48px;
+    max-height: 48px;
+    margin-left: 16px;
+    border: 1px solid var(--ctp-mocha-overlay);
+    border-radius: 4px;
+    background-color: var(--ctp-mocha-base);
+    color: var(--ctp-mocha-text);
+    font-size: 20px;
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
-
 .media-menu .btn:hover {
-  background-color: var(--ctp-mocha-surface0);
-  color: var(--ctp-mocha-mauve);
+    background-color: var(--ctp-mocha-surface);
+    color: var(--ctp-mocha-primary);
 }
-
 .media-menu .btn.disabled:hover,
 .media-menu .btn.disabled {
-  color: var(--ctp-mocha-surface0);
-  background-color: transparent;
+    background-color: transparent;
+    color: var(--ctp-mocha-overlay);
 }
-
 .media-menu .playback-time {
-  margin-top: 12px;
+    margin: 12px 0 6px;
 }
-
 .media-menu .progress-slider::groove {
-  background-color: var(--ctp-mocha-surface0);
-  height: 4px;
+    height: 4px;
+    background-color: var(--ctp-mocha-overlay);
 }
-
 .media-menu .progress-slider::groove:hover {
-  height: 6px;
+    height: 6px;
 }
-
 .media-menu .progress-slider::sub-page {
-  background-color: var(--ctp-mocha-mauve);
+    background-color: var(--ctp-mocha-primary);
+}
+.media-menu .source {
+    margin-left: 12px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: var(--ctp-mocha-surface);
+    color: var(--ctp-mocha-primary);
+    font-family: var(--font-ui);
 }
 
-.glazewm-binding-mode .icon {
-  color: var(--ctp-mocha-text);
+/* Grouper Widget */
+.hardware-grouper .grouper-button {
+    min-width: 32px;
+    max-width: 32px;
+    min-height: 32px;
+    max-height: 32px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: var(--ctp-mocha-text);
+    transition: background-color 0.25s ease;
+    cursor: pointer;
+}
+.hardware-grouper .grouper-button:hover {
+    background-color: var(--ctp-mocha-surface);
+    color: var(--ctp-mocha-primary);
 }
 
-.notification-widget .icon {
-  color: var(--ctp-mocha-text);
+/* CPU, Memory, GPU Widget */
+.cpu-widget, .memory-widget, .gpu-widget { 
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    transition: background-color 0.25s ease;
+    cursor: pointer;
+}
+.cpu-widget:hover, .memory-widget:hover, .gpu-widget:hover {
+    background-color: var(--ctp-mocha-surface);
 }
 
+/* GlazeWM Tiling Direction Widget */
+.glazewm-tiling-direction {
+    transition: background-color 0.25s ease;
+    cursor: pointer;
+}
+.glazewm-tiling-direction:hover {
+    background-color: var(--ctp-mocha-surface);
+}
+.glazewm-tiling-direction .btn {
+    border: none;
+    outline: none;
+    min-width: 32px;
+    max-width: 32px;
+    color: var(--ctp-mocha-primary);
+    font-size: 24px;
+}
+
+/* GlazeWM Binding Mode Widget */
+.glazewm-binding-mode {
+    transition: background-color 0.25s ease;
+    cursor: pointer;
+}
+.glazewm-binding-mode:hover {
+    background-color: var(--ctp-mocha-surface);
+}
+
+/* Quick Launch Widget */
+.quick-launch-widget {
+    transition: background-color 0.25s ease;
+    cursor: pointer;
+}
+.quick-launch-widget:hover {
+    background-color: var(--ctp-mocha-surface);
+}
+.quick-launch-popup .container {
+    background-color: var(--ctp-mocha-crust);
+}
+.quick-launch-popup .search {
+    padding: 12px 16px;
+}
+.quick-launch-popup .search .search-icon,
+.quick-launch-popup .search .search-submit-icon {
+    color: var(--ctp-mocha-primary);
+    font-family: var(--font-icon);
+    font-size: 16px;
+}
+.quick-launch-popup .search .search-input {
+    margin: 0 8px;
+    padding: 4px 8px;
+    border: none;
+    background-color: transparent;
+    font-family: var(--font-ui);
+    font-size: 16px;
+}
+.quick-launch-popup .search .prefix {
+    margin-left: 8px;
+    padding: 0 8px;
+    border: 1px solid var(--ctp-mocha-overlay);
+    border-radius: 4px;
+    background-color: var(--ctp-mocha-surface);
+    color: var(--ctp-mocha-primary);
+    font-family: var(--font-ui);
+    font-size: 16px;
+    font-weight: bold;
+}
+.quick-launch-popup .results {
+    padding: 8px;
+}
+.quick-launch-popup .results-list-view {
+    font-family: var(--font-ui);
+    font-size: 16px;
+}
+.quick-launch-popup .results-list-view .description {
+    font-family: var(--font-ui);
+}
+.quick-launch-popup .results-list-view::item {
+    margin: 4px 8px;
+    padding: 12px;
+    border-radius: 4px;
+}
+.quick-launch-popup .results-list-view::item:hover,
+.quick-launch-popup .results-list-view::item:selected {
+    background-color: var(--ctp-mocha-surface);
+}
+.quick-launch-popup .results-empty-text {
+    color: var(--ctp-mocha-text);
+    font-family: var(--font-ui);;
+    font-size: 16px;
+}
+.quick-launch-popup .preview {
+    margin: 12px;
+    padding: 16px;
+    background-color: var(--ctp-mocha-surface);
+}
+
+/* Wallpapers Widget */
+.wallpapers-widget {
+    transition: background-color 0.25s ease;
+    cursor: pointer;
+}
+.wallpapers-widget:hover {
+    background-color: var(--ctp-mocha-surface);
+}
+.wallpapers-gallery-window {
+    background-color: var(--ctp-mocha-crust);
+}
+.wallpapers-gallery-buttons {
+    min-width: 128px;
+    max-width: 128px;
+    margin: 0 16px 24px 16px;
+    padding: 8px 24px;
+    border: 1px solid var(--ctp-mocha-overlay);
+    border-radius: 4px;
+    font-family: var(--font-ui);
+    background-color: var(--ctp-mocha-base);
+    transition: background-color 0.25s ease;
+    cursor: pointer;
+}
+.wallpapers-gallery-buttons:hover {
+    background-color: var(--ctp-mocha-surface);
+}
+.wallpapers-gallery-image {
+    border: 1px solid var(--ctp-mocha-overlay);
+    border-radius: 4px;
+}
+.wallpapers-gallery-image.focused {
+    border: 1px solid var(--ctp-mocha-primary);
+}
+
+/* Notifications Widget */
+.notification-widget {
+    transition: background-color 0.25s ease;
+    cursor: pointer;
+}
+.notification-widget:hover {
+    background-color: var(--ctp-mocha-surface);
+}
+
+/* Power Menu Widget */
 .power-menu-widget {
-  margin-right: 16px;
+    transition: background-color 0.25s ease;
+    cursor: pointer;
 }
-
-.power-menu-widget .label {
-  border-radius: 8px;
-  min-width: 32px;
-  max-width: 32px;
-  font-size: 16px;
-  padding: 0;
+.power-menu-widget:hover {
+    background-color: var(--ctp-mocha-surface);
 }
-
+.power-menu-widget .icon {
+    color: var(--ctp-mocha-text);
+}
 .power-menu-popup {
-  background-color: var(--ctp-mocha-crust);
-  border: 2px solid var(--ctp-mocha-surface0);
-  border-radius: 8px;
-  padding: 24px;
+    padding: 12px;
+    border: 1px solid var(--ctp-mocha-overlay);
+    border-radius: 4px;
+    background-color: var(--ctp-mocha-crust);
 }
-
 .power-menu-popup .button {
-  background-color: var(--ctp-mocha-base);
-  border: 2px solid var(--ctp-mocha-surface0);
-  padding: 32px;
-  margin: 8px;
-  width: 96px;
-  height: 96px;
-  border-radius: 8px;
+    min-width: 96px;
+    min-height: 96px;
+    max-height: 96px;
+    margin: 12px;
+    padding: 32px;
+    border: 1px solid var(--ctp-mocha-overlay);
+    border-radius: 4px;
+    background-color: var(--ctp-mocha-base);
+    transition: background-color 0.25s ease;
 }
-
-.power-menu-popup .button.hover {
-  background-color: var(--ctp-mocha-surface0);
-  border: 2px solid var(--ctp-mocha-mauve);
+.power-menu-popup .button:hover {
+    background-color: var(--ctp-mocha-surface);
 }
-
 .power-menu-popup .button .icon {
-  font-size: 48px;
-  margin-top: 32px;
+    margin-top: 16px;
+    font-size: 48px;
 }
-
 .power-menu-popup .button .label {
-  font-family: "Segoe UI";
-  font-size: 16px;
-  margin-bottom: 32px;
+    margin-bottom: 32px;
+    font-family: var(--font-ui);
+    font-size: 16px;
 }
-
 .power-menu-popup .button.cancel .icon,
 .power-menu-popup .button.cancel .label {
-  color: var(--ctp-mocha-mauve);
+    color: var(--ctp-mocha-primary);
 }
-
 .power-menu-popup .profile-info {
-  font-family: "Segoe UI";
-  padding: 0 0 24px 0;
-  border-bottom: 2px solid var(--ctp-mocha-surface0);
-  background-color: transparent;
-  margin-bottom: 24px;
+    margin-bottom: 24px;
+    padding: 24px;
+    border-bottom: 1px solid var(--ctp-mocha-overlay);
+    background-color: transparent;
+    font-family: var(--font-ui);
 }
-
 .power-menu-popup .profile-info .profile-username {
-  font-family: "Segoe UI";
-  font-size: 24px;
-  padding-top: 12px;
+    padding-top: 12px;
+    font-family: var(--font-ui);
+    font-size: 24px;
 }
-
 .power-menu-popup .profile-info .profile-account-type {
-  font-family: "Segoe UI";
-  font-size: 16px;
-  color: var(--ctp-mocha-mauve);
-  margin: 4px 0;
+    margin: 4px 0;
+    color: var(--ctp-mocha-primary);
+    font-family: var(--font-ui);
+    font-size: 16px;
 }
-
 .power-menu-popup .profile-info .profile-email {
-  font-family: "Segoe UI";
-  font-size: 16px;
+    font-family: var(--font-ui);
+    font-size: 16px;
 }
-
-.uptime {
-  font-family: "Segoe UI";
-  margin-bottom: 24px;
+.power-menu-overlay {
+    background-color: var(--ctp-mocha-crust);
+}
+.power-menu-overlay .uptime {
+    margin-bottom: 24px;
+    font-family: var(--font-ui);
 }
